@@ -16,8 +16,8 @@ This repository is a central hub for my development experiments, course exercise
 
 ### C#
 
-- **Flight Reservation System**: A C# console application demonstrating robust Object-Oriented design patterns. It uses a central Coordinator pattern to manage interactions between dedicated Flight, Customer, and Booking managers. Key features include local data persistence via custom file I/O serialization, rigorous input validation, and dynamic string manipulation for perfectly aligned terminal UI tables.
+- **Flight Reservation System**: A C# console application demonstrating **robust Object-Oriented design** patterns. It uses a central Coordinator pattern to manage interactions between dedicated Flight, Customer, and Booking managers. Key features include local data persistence via custom file I/O serialization, rigorous input validation, and dynamic string manipulation for perfectly aligned terminal UI tables.
 
 ### LeetCode
 
-- **Algorithm Practice**: A growing collection of my solutions to LeetCode problems.
+- **Problem Solving Practice**: A growing collection of my solutions to LeetCode problems.

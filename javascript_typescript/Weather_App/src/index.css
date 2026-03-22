@@ -1,0 +1,41 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Inter', sans-serif;
+}
+.weather-card {
+    border-top: 8px solid #0d6efd;
+}
+.main-weather-display {
+    background-image: url('assets/background.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.65;
+}
+
+.blue-background {
+    background-color: rgba(116, 120, 129, 0.436);
+    padding: 1em;
+    border-radius: 20px;
+}
+
+.forecast-scroll-container {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 0.5rem;
+}
+.forecast-item {
+    display: inline-block;
+    width: 130px;
+    flex-shrink: 0;
+}
+.stat-item {
+    border-bottom: 1px solid #dee2e6;
+}
+.stat-item:last-child {
+    border-bottom: none;
+}
+
+#wrapper{
+    width: 1200px;
+}

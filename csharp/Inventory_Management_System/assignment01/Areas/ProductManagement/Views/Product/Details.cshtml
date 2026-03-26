@@ -1,0 +1,32 @@
+@model assignment01.Areas.ProductManagement.Models.Product
+
+@{
+    ViewBag.Title = "Product Details";
+    Layout = "_Layout";
+}
+
+<div class="card">
+    <h2 class="card-header">Details</h2>
+    <div class="card-body">
+        <h3 class="card-title">@Model.ProductName</h3>
+        <p class="card-text product_details_description">@Model.ProductDescription</p>
+        
+        <dl class="row">
+            <dt class="col-sm-2 product_details_add_info">Price:</dt>
+            <dd class="col-sm-10 product_details_add_info">@Model.Price.ToString("F2")</dd>
+
+            <dt class="col-sm-2 product_details_add_info">Quantity:</dt>
+            <dd class="col-sm-10 product_details_add_info">@Model.Quantity</dd>
+            
+            <dt class="col-sm-2 product_details_add_info">Low Stock Threshold:</dt>
+            <dd class="col-sm-10 product_details_add_info">@Model.LowStockThreshold</dd>
+
+            <dt class="col-sm-2 product_details_add_info">Category:</dt>
+            <dd class="col-sm-10 product_details_add_info">@Model.Category.CategoryName</dd>
+        </dl>
+
+        <a asp-action="Edit" asp-route-id="@Model.ProductId" class="btn btn-primary">Edit</a>
+        <a asp-action="Delete" asp-route-id="@Model.ProductId" class="btn btn-danger">Delete</a>
+        <a asp-action="Index" class="btn btn-secondary">Go Back</a>
+    </div>
+</div>

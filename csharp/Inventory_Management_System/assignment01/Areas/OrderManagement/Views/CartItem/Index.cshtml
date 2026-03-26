@@ -1,0 +1,71 @@
+﻿@using assignment01.Areas.ProductManagement.Models
+@model ICollection<assignment01.Areas.OrderManagement.Models.CartItem>
+
+@{
+    ViewBag.Title = "Cart Items";
+    Layout = "_Layout";
+    double grandTotal = 0;
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p id="emptyCartMessage" style="@(Model.Any() ? "display: none;" : "display: block;")">
+    No items in the cart. Check <a asp-area="ProductManagement" asp-controller="Product" asp-action="Index">Product list</a>
+</p>
+
+@if (Model.Any())
+{
+    <div id="cart">
+        <p class="text-danger">@TempData["Message"]</p>
+        <table id="cartItems" class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var cartItem in Model)
+            {
+                var itemTotal = cartItem.CalculateTotal();
+                grandTotal += itemTotal;
+                <tr>
+                    <td class="col-2">@cartItem.Product.ProductName</td>
+                    <td class="col-1">$@cartItem.Product.Price.ToString("F2")</td>
+                    <td class="col-1">
+                        <form class="changeCartItemQuantityForm" asp-controller="CartItem" asp-action="UpdateItemQuantity" method="post">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="ProductId" value="@cartItem.ProductId">
+                            
+                            <button type="submit" name="Action" value="decrement" class="btn btn-danger btn-sm">-</button>
+                            <span>@cartItem.Quantity</span>
+                            <button type="submit" name="Action" value="increment" class="btn btn-success btn-sm">+</button>
+                        </form>
+                    </td>
+                    <td class="col-1 cartItemTotal">$@itemTotal.ToString("F2")</td>
+                    <td class="col-1">
+                        <form class="removeCartItemForm" asp-controller="CartItem" asp-action="RemoveItemFromCart" method="post">
+                            <input type="hidden" name="ProductId" value="@cartItem.ProductId">
+                            <button type="submit" class="btn btn-danger">Remove item</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+            <tr class="table-info">
+                <th colspan="4" class="text-right"><strong>Grand Total: </strong></th>
+                <td class="col-1" id="cartItem_grandTotal"><strong>$@grandTotal.ToString("F2")</strong></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <a asp-area="OrderManagement" asp-controller="Order" asp-action="Create" class="btn btn-primary">Place Order</a>
+    </div>
+}
+
+@section Scripts
+{
+    <script src="~/js/cartItems.js"></script>
+}

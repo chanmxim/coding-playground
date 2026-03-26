@@ -1,0 +1,77 @@
+@model List<assignment01.Areas.ProductManagement.Models.Product>
+
+@{
+    ViewBag.Title = "Summary Page Component";
+    int productCounter = 1;
+}
+
+<div class="container py-4 px-0">
+    <div class="p-5 mb-4 bg-light rounded-3 shadow-sm">
+        <div class="container-fluid py-5">
+            <h2 class="display-5 fw-bold text-danger">Low Stock Alert</h2>
+            <div class="col-md-10 fs-4">
+                @if (Model.Any())
+                {
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover align-middle">
+                        <thead>
+                        <tr>
+                            <th scope="col">No.</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Low Stock Threshold</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach (var product in Model)
+                        {
+                        <tr>
+                            <th scope="row">@productCounter</th>
+                            <td>@product.ProductName</td>
+                            <td class="text-center">@product.Price.ToString("F2")</td>
+                            <td class="text-center">@product.Quantity</td>
+                            <td class="text-center text-danger">@product.LowStockThreshold</td>
+                            <td>
+                                <a asp-action="Details" asp-route-id="@product.ProductId" class="btn btn-info">Details</a>
+                            </td>
+                        </tr>
+                        productCounter++;
+                        }
+                        </tbody>
+                    </table>
+                </div>
+                }
+                else
+                {
+                <p class="text-muted">No product available</p>
+                }
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="h-100 p-4 bg-dark text-white rounded-3 shadow-sm">
+                <h2 class="fw-bold">Total Stock</h2>
+                <p class="fs-3">@ViewBag.TotalNumberOfStock</p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="h-100 p-4 bg-light border rounded-3 shadow-sm">
+                <h2 class="fw-bold">Categories</h2>
+                <ul class="list-group">
+                    @foreach (var category in ViewBag.CategoryList)
+                    {
+                    <li class="list-group-item list-group-item-action fs-5">
+                        @category.CategoryName
+                    </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,58 @@
+@model List<assignment01.Areas.ProductManagement.Models.Product>
+
+<p class="d-flex justify-content-start gap-2">
+    <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#filterOptions" aria-expanded="false" aria-controls="filterOptions">
+        Filters
+    </button>
+</p>
+
+<div class="collapse p-3 border rounded bg-light" id="filterOptions">
+    <form method="get">
+        <div class="row mb-3">
+            <label class="form-label fw-bold">Price Range</label>
+            <div class="col-md-5">
+                <input type="number" class="form-control" name="minPrice" placeholder="Min Price" value="@ViewBag.MinPrice">
+            </div>
+            <div class="col-md-2 text-center">
+                <span class="fw-bold">-</span>
+            </div>
+            <div class="col-md-5">
+                <input type="number" class="form-control" name="maxPrice" placeholder="Max Price" value="@ViewBag.MaxPrice">
+            </div>
+        </div>
+        <div class="form-group mb-3">
+            <label class="form-label fw-bold">Categories</label>
+            <ul class="list-unstyled border-bottom border-top py-3">
+                @foreach (var category in ViewBag.Categories)
+                {
+                <li class="form-check"> 
+                    <input type="checkbox" class="form-check-input" id="category_@category.CategoryId" name="categories" value="@category.CategoryId"
+                           @(ViewBag.SelectedCategories != null && ViewBag.SelectedCategories.Contains(category.CategoryId) ? "checked" : "")/>
+                    <label class="form-check-label" for="category_@category.CategoryId ">@category.CategoryName</label>
+                </li>
+                }
+            </ul>
+        </div>
+        <div class="form-group form-check mb-3">
+            <input type="checkbox" class="form-check-input" id="lowStockStatus" name="lowStockStatus" value="true"
+                   @(ViewBag.LowStockStatus == "true" ? "checked" : "") />
+            <label for="lowStockStatus" class="form-check-label fw-bold">Low Stock Status</label>
+        </div>
+        <div class="form-group mb-3">
+            <label class="form-label fw-bold" for="sortType">Sort by:</label>
+            <select name="sortType" id="sortType" class="form-select">
+                <option value="" selected="@(ViewBag.SortType == "nameAsc")">Name Asc</option>
+                <option value="nameDesc" selected="@(ViewBag.SortType == "nameDesc")">Name Desc</option>
+                <option value="priceAsc" selected="@(ViewBag.SortType == "priceAsc")">Price Asc</option>
+                <option value="priceDesc" selected="@(ViewBag.SortType == "priceDesc")">Price Desc</option>
+                <option value="quantityAsc" selected="@(ViewBag.SortType == "quantityAsc")">Quantity Asc</option>
+                <option value="quantityDesc" selected="@(ViewBag.SortType == "quantityDesc")">Quantity Desc</option>
+            </select>
+        </div>
+
+        <div class="d-flex justify-content-start gap-2">
+            <input type="submit" value="Apply filters" class="btn btn-primary">
+            <a asp-action="Index" class="btn btn-danger">Clear</a>
+        </div>
+    </form>
+</div>

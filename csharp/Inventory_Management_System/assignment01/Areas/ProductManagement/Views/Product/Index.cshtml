@@ -1,0 +1,33 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model List<assignment01.Areas.ProductManagement.Models.Product>
+
+
+@{
+    ViewBag.Title = "Product List";
+    Layout = "_Layout";
+}
+
+<h2>Product List</h2>        
+@if (User.IsInRole("Admin"))
+{
+    <div>
+        <a asp-action="Add" class="btn btn-primary col-2">Add Product</a>
+    </div>
+}
+<input type="text" id="productSearch" name="searchString" placeholder="Search products" class="form-control my-3">
+
+@await Html.PartialAsync("Product/_ProductFiltersPartial", Model)
+
+<div id="productList">
+    @await Html.PartialAsync("Product/_ProductListPartial", Model)    
+</div>
+
+
+@section Scripts
+{
+    
+    <script src="~/js/productSearch.js"></script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "404 Page Not Found";
+    Layout = "_Layout";
+}
+
+
+<div class="container mt-5">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-6 text-center">
+            <h2>:(</h2>
+            <h3>@ViewBag.Title</h3>
+            <p>Sorry, the page you are looking for could not be found.</p>
+            <a href="@Url.Action("Index", "Home")" class="btn btn-primary">Go Back to Home Page</a>
+        </div>
+    </div>
+</div>
+

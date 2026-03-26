@@ -1,0 +1,11 @@
+﻿@model List<assignment01.Areas.ProductManagement.Models.Product>
+
+@{
+    ViewBag.Title = "Products Summary";
+    Layout = "_Layout";
+}
+
+<h2 class="mt-4">@ViewBag.Title</h2>
+
+@await Component.InvokeAsync("ProductSummary")
+

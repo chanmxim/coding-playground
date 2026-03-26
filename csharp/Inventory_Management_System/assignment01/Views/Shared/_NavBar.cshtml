@@ -1,0 +1,52 @@
+@using Microsoft.AspNetCore.Identity
+@using assignment01.Areas.Identity.Models
+
+@inject SignInManager<User> SignInManager
+
+
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <div class="container-fluid">
+
+        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+            <i class="fa-solid fa-building"></i> Group 41 Inc.
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+            <ul class="navbar-nav flex-grow-1 justify-content-end">
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="ProductManagement" asp-controller="Product" asp-action="Index">
+                            <i class="fa-solid fa-warehouse"></i> Products</a>
+                    </li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="ProductManagement" asp-controller="Category" asp-action="Index">
+                                <i class="fa-solid fa-list"></i> Categories</a>
+                        </li>
+                    }
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="ProductManagement" asp-controller="Product" asp-action="Summary">
+                            <i class="fa-solid fa-rectangle-list"></i> Summary</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="OrderManagement" asp-controller="Order" asp-action="Index">
+                            <i class="fa-solid fa-truck-moving"></i> Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="OrderManagement" asp-controller="CartItem" asp-action="Index">
+                            <i class="fa-solid fa-cart-shopping"></i>Cart</a>
+                    </li>
+                }
+                @await Html.PartialAsync("_LoginPartial")
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -10,6 +10,8 @@ This repository is a central hub for my development experiments, course exercise
 
 - **Employee Management System**: A full-stack **MERN (MongoDB, Express.js, React, Node.js)** application utilizing **TanStack Query** for highly optimized asynchronous server state management (queries and mutations) alongside **Redux**. It provides comprehensive CRUD capabilities for employee records, secure **JWT-based authentication**, and robust file upload functionality. 
 
+- **Real-Time Chat App**: A full-stack **MERN application (MongoDB, Express.js, React, Node.js)**. It features real-time bidirectional communication using **Socket.io** for room-based group chats and private messaging, secure JWT-based authentication, and live "user is typing..." indicators.
+
 - **Weather Dashboard**: A frontend **React** application built with Vite and Bootstrap. It integrates the OpenWeatherMap API via Axios to fetch and display real-time weather data, atmospheric metrics, and multi-day forecasts for dynamically searched cities. 
 
 ### C#

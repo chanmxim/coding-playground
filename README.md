@@ -6,6 +6,12 @@ This repository is a central hub for my development experiments, course exercise
 
 ## Featured Projects by Language
 
+### Javascript/Typescript
+
+- **Employee Management System**: A full-stack **MERN (MongoDB, Express.js, React, Node.js)** application utilizing **TanStack Query** for highly optimized asynchronous server state management (queries and mutations) alongside **Redux**. It provides comprehensive CRUD capabilities for employee records, secure **JWT-based authentication**, and robust file upload functionality. 
+
+- **Weather Dashboard**: A frontend **React** application built with Vite and Bootstrap. It integrates the OpenWeatherMap API via Axios to fetch and display real-time weather data, atmospheric metrics, and multi-day forecasts for dynamically searched cities. 
+
 ### C#
 
 - **Smart Inventory Management System:** A dynamic, full-stack web application built with **ASP.NET Core MVC (.NET 9.0)**. Designed for small businesses to track inventory and process orders, this project features role-based security via **ASP.NET Core Identity**, asynchronous real-time UI updates using **AJAX**, and robust database management with PostgreSQL and **Entity Framework Core** migrations.

@@ -1,0 +1,74 @@
+<div class="min-h-screen bg-gradient-to-br from-slate-50 via-gray-100 to-indigo-50 flex flex-col justify-center px-6 py-12">
+  
+  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <div class="text-center mb-10">
+      <p class="mt-2 text-3xl text-slate-900 font-semibold tracking-wide">
+        Sign Up
+      </p>
+    </div>
+
+    <div class="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-sm border border-white/20">
+      
+      @if (error()) {
+        <div class="mb-6 text-xs font-medium text-red-500 tracking-wide uppercase text-center">
+          {{ error() }}
+        </div>
+      }
+
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="space-y-8">
+        <div>
+          <label class="block text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-1">Username</label>
+          <input 
+            formControlName="username" 
+            type="text" 
+            placeholder="Username"
+            class="block w-full border-0 border-b border-slate-200 bg-transparent px-0 py-2 text-slate-900 placeholder:text-slate-300 focus:ring-0 focus:border-indigo-500 sm:text-sm transition-all"
+            [class.border-red-400]="signupForm.get('username')?.invalid && signupForm.get('username')?.touched"
+          >
+        </div>
+
+        <div>
+          <label class="block text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-1">Email Address</label>
+          <input 
+            formControlName="email" 
+            type="email" 
+            placeholder="email@example.com"
+            class="block w-full border-0 border-b border-slate-200 bg-transparent px-0 py-2 text-slate-900 placeholder:text-slate-300 focus:ring-0 focus:border-indigo-500 sm:text-sm transition-all"
+            [class.border-red-400]="signupForm.get('email')?.invalid && signupForm.get('email')?.touched"
+          >
+        </div>
+
+        <div>
+          <label class="block text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-1">Password</label>
+          <input 
+            formControlName="password" 
+            type="password" 
+            placeholder="••••••••"
+            class="block w-full border-0 border-b border-slate-200 bg-transparent px-0 py-2 text-slate-900 placeholder:text-slate-300 focus:ring-0 focus:border-indigo-500 sm:text-sm transition-all"
+            [class.border-red-400]="signupForm.get('password')?.invalid && signupForm.get('password')?.touched"
+          >
+        </div>
+
+        <div class="pt-2">
+          <button 
+            type="submit" 
+            [disabled]="signupForm.invalid || isLoading()"
+            class="w-full bg-slate-900 py-3 rounded-full text-xs font-bold uppercase tracking-widest text-white hover:bg-black disabled:bg-slate-200 disabled:text-slate-400 transition-all active:scale-[0.97] shadow-lg shadow-slate-200"
+          >
+            @if (isLoading()) {
+              <span class="animate-pulse">Creating...</span>
+            } @else {
+              Register
+            }
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="mt-10 text-center">
+      <a routerLink="/login" class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 hover:text-indigo-600 transition-colors">
+        Login
+      </a>
+    </div>
+  </div>
+</div>

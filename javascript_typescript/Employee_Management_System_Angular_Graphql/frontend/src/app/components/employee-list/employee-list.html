@@ -1,0 +1,83 @@
+<div class="min-h-screen bg-gradient-to-br from-slate-50 via-gray-100 to-indigo-50 px-8 py-12">
+  <div class="max-w-6xl mx-auto">
+    
+    <div class="flex justify-between items-end mb-12">
+      <div>
+        <h1 class="text-3xl font-bold text-slate-900">Employee List</h1>
+      </div>
+      <div class="flex items-center gap-8">
+        <button routerLink="/add-employee" class="bg-slate-900 text-white text-[10px] font-bold uppercase tracking-widest px-8 py-3 rounded-full hover:bg-black transition-all shadow-lg shadow-slate-200 active:scale-95">
+          Add Employee
+        </button>
+        <button (click)="logout()" class="text-slate-400 hover:text-red-500 text-[10px] font-bold uppercase tracking-widest transition-colors">
+          Logout
+        </button>
+      </div>
+    </div>
+
+    <div class="mb-10">
+      <div class="relative max-w-sm">
+        <input 
+          type="text" 
+          [(ngModel)]="searchText"
+          (input)="onSearch()"
+          placeholder="Filter by department or position..."
+          class="w-full bg-white/60 backdrop-blur-md border border-white/40 rounded-2xl px-5 py-4 text-sm focus:ring-2 focus:ring-indigo-100 focus:border-indigo-400 placeholder:text-slate-400 transition-all shadow-sm outline-none"
+        >
+      </div>
+    </div>
+
+    <div class="bg-white/70 backdrop-blur-md rounded-[2rem] shadow-sm border border-white/20 overflow-hidden">
+      <table class="w-full text-left border-collapse">
+        <thead>
+          <tr class="border-b border-slate-100/50">
+            <th class="px-8 py-6 text-[10px] font-bold uppercase tracking-widest text-slate-400">Employee</th>
+            <th class="px-8 py-6 text-[10px] font-bold uppercase tracking-widest text-slate-400">Designation</th>
+            <th class="px-8 py-6 text-[10px] font-bold uppercase tracking-widest text-slate-400">Department</th>
+            <th class="px-8 py-6 text-[10px] font-bold uppercase tracking-widest text-slate-400 text-right">Actions</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-slate-100/50">
+          @for (emp of employees(); track emp.id) {
+            <tr class="hover:bg-white/50 transition-colors group">
+              <td class="px-8 py-6">
+                <div class="flex flex-col">
+                  <span class="text-sm font-semibold text-slate-900">{{ emp.first_name }} {{ emp.last_name }}</span>
+                  <span class="text-xs text-slate-400 font-light">{{ emp.email }}</span>
+                </div>
+              </td>
+              <td class="px-8 py-6">
+                <span class="text-sm text-slate-600 font-light">{{ emp.designation }}</span>
+              </td>
+              <td class="px-8 py-6">
+                <span class="inline-block bg-indigo-50 text-indigo-600 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tight">
+                  {{ emp.department }}
+                </span>
+              </td>
+              <td class="px-8 py-6 text-right">
+                <div class="flex justify-end gap-6 transition-all transform translate-x-2 group-hover:translate-x-0">
+                  <button [routerLink]="['/view-employee', emp.id]" class="text-[10px] font-bold uppercase tracking-widest text-indigo-500 hover:text-indigo-700">View</button>
+                  <button [routerLink]="['/edit-employee', emp.id]" class="text-[10px] font-bold uppercase tracking-widest text-slate-400 hover:text-slate-900">Edit</button>
+                  <button (click)="deleteEmployee(emp.id)" class="text-[10px] font-bold uppercase tracking-widest text-red-300 hover:text-red-600">Delete</button>
+                </div>
+              </td>
+            </tr>
+          } @empty {
+            <tr>
+              <td colspan="4" class="px-8 py-24 text-center">
+                @if (isLoading()) {
+                  <div class="flex flex-col items-center gap-3">
+                    <div class="w-5 h-5 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
+                    <p class="text-xs font-bold uppercase tracking-widest text-slate-400">Syncing Records</p>
+                  </div>
+                } @else {
+                  <p class="text-sm text-slate-400 font-light italic">No personnel records found.</p>
+                }
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

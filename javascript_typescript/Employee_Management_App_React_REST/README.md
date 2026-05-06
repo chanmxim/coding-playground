@@ -1,6 +1,6 @@
 # Employee Management App
 
-A full-stack Employee Management web application built with **React**, **Express.js**, **MongoDB Atlas**, and **Redux**. Users can add, update, delete, and search employees. Authentication is implemented with JWT.
+A full-stack Employee Management web application built with **React**, **Express.js**, **MongoDB**, **TanStack Query** and **Redux**. Users can add, update, delete, and search employees. Authentication is implemented with JWT.
 
 ---
 

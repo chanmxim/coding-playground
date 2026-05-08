@@ -20,7 +20,7 @@ The application is built upon a robust Model-View-Controller (MVC) architecture,
 
 - **Language**: C#
 
-- **Databases & ORM**: PostgreSQL, Entity Framework Core 
+- **Databases & ORM**: PostgreSQL, LINQ, Entity Framework Core 
 
 - **Frontend**: Razor Views, JavaScript 
 

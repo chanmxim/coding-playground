@@ -17,7 +17,7 @@ This repository is a central hub for my development experiments, course exercise
 
 ### C#
 
-- **Smart Inventory Management System**: A dynamic, full-stack web application built with **ASP.NET Core MVC (.NET 9.0)**. Designed for small businesses to track inventory and process orders, this project features role-based security via **ASP.NET Core Identity**, asynchronous real-time UI updates using **AJAX**, and robust database management with **PostgreSQL** and **Entity Framework Core** migrations.
+- **Smart Inventory Management System**: A dynamic, full-stack web application built with **ASP.NET Core MVC (.NET 9.0)**. Designed for small businesses to track inventory and process orders, this project features role-based security via **ASP.NET Core Identity**, asynchronous real-time UI updates using **AJAX**, and robust database management with **PostgreSQL**, **LINQ**, and **Entity Framework Core** migrations.
 
 - **Flight Reservation System**: A C# console application demonstrating **robust Object-Oriented design** patterns. It uses a central Coordinator pattern to manage interactions between dedicated Flight, Customer, and Booking managers. Key features include local data persistence via **custom file I/O serialization**, **rigorous input validation**, and **dynamic string manipulation** for perfectly aligned terminal UI tables.
 

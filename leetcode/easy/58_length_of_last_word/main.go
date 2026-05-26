@@ -2,26 +2,26 @@ package main
 
 // ====== BACKWARD (PERFORMANCE) APPROACH ======
 func lengthOfLastWord(s string) int {
-    counter := 0
-    i := len(s) - 1
+	counter := 0
+	i := len(s) - 1
 
-    for i >= 0 && s[i] == ' '{
-        i--
-    }
+	for i >= 0 && s[i] == ' ' {
+		i--
+	}
 
-    for i >= 0 && s[i] != ' '{
-        counter++
-        i--
-    }
+	for i >= 0 && s[i] != ' ' {
+		counter++
+		i--
+	}
 
-    return counter
+	return counter
 }
 
 // ====== NAIVE APPROACH ======
 // func lengthOfLastWord(s string) int {
 //     counter := 0
 //     reset := true
-    
+
 //     for _, char := range s{
 //         if char != ' '{
 //             if reset{
@@ -33,12 +33,12 @@ func lengthOfLastWord(s string) int {
 //         } else{
 //             reset = true
 //         }
-        
+
 //     }
 
 //     return counter
 // }
 
-func main(){
+func main() {
 	println(lengthOfLastWord("Hello World"))
 }

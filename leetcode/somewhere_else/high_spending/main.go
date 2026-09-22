@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+// Context: The fraud detection team wants to identify periods where a customer had a sudden spike in sequential spending.
 // Problem: Given an array of integers representing a customer's daily net spending (positive numbers mean they spent money, negative numbers mean they received money), find the contiguous sub-array (containing at least one number) which has the largest sum and return its sum.
 
 func fraud_detection(spending []int) int {

@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+// Convert c to lower case; ASCII only
 int lower(int c);
 
 int main() {

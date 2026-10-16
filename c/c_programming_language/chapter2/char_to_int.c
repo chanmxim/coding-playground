@@ -1,6 +1,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
+// Convert s to integer
 int atoi(char s[]);
 
 int main() {
